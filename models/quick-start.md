@@ -82,6 +82,34 @@ python3 download_models_simple.py --output /path/to/ComfyUI/models
 python3 download_models_simple.py
 ```
 
+### ⚡ 并发下载（加速）
+
+启用并发下载可以显著提升下载速度，特别是下载多个小文件时：
+
+```bash
+# 使用默认3个线程并发下载
+python3 download_models_simple.py --parallel
+
+# 指定5个线程并发下载
+python3 download_models_simple.py --parallel --workers 5
+
+# 并发下载特定目录
+python3 download_models_simple.py --parallel --dirs loras controlnet
+
+# 推荐：下载小文件时使用更多线程
+python3 download_models_simple.py --parallel --workers 8 --dirs loras clip
+```
+
+**⚠️ 注意事项：**
+- 下载大文件（如 UNET 模型）时，并发优势不明显，建议使用默认串行模式
+- 线程数不宜过多（建议 3-8 个），过多可能导致网络拥塞或触发服务器限流
+- 并发下载会同时进行多个文件的下载，进度显示可能交错
+
+**推荐配置：**
+- 小文件（LoRA、ControlNet）：`--parallel --workers 5-8`
+- 中等文件（CLIP、VAE）：`--parallel --workers 3-5`
+- 大文件（UNET、Checkpoint）：不使用 `--parallel`（串行更稳定）
+
 ## 📊 预期下载量
 
 根据你选择的目录不同，下载量也不同：
