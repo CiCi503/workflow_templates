@@ -209,17 +209,27 @@ python3 generate_hf_download_script_filtered.py \
 |------|---------------|----------------------------|
 | 状态 | ✅ 最新推荐 | ⚠️ 已过时 |
 | 命令长度 | 更短 | 更长 |
+| 参数 | 更简洁（无需 `--local-dir-use-symlinks`）| 需要额外参数 |
 | 功能 | 完整支持 | 功能相同 |
 
 ### 命令对比
 
 ```bash
-# 新命令（推荐）
-hf download "repo_id" "file_path" --local-dir /path
+# 新命令（推荐）- 更简洁
+hf download "repo_id" "file_path" --local-dir /path --revision main
 
-# 旧命令（已过时）
-huggingface-cli download "repo_id" "file_path" --local-dir /path
+# 旧命令（已过时）- 需要额外参数
+huggingface-cli download "repo_id" "file_path" \
+  --local-dir /path \
+  --local-dir-use-symlinks False \
+  --revision main
 ```
+
+### 主要区别
+
+1. **参数简化**: `hf download` 默认不使用符号链接，无需指定 `--local-dir-use-symlinks False`
+2. **命令更短**: 命令名从 `huggingface-cli` 缩短为 `hf`
+3. **更现代**: 基于最新的 CLI 设计规范
 
 ## 🛠️ 故障排查
 

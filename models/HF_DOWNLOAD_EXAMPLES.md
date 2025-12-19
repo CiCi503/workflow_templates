@@ -22,8 +22,7 @@ chmod +x download_loras_controlnet.sh
 # 下载单个文件
 hf download "Comfy-Org/flux1-dev" \
   "flux1-dev.safetensors" \
-  --local-dir /root/dehui/models/unet \
-  --local-dir-use-symlinks False
+  --local-dir /root/dehui/models/unet
 ```
 
 ## 📋 常用目录组合
@@ -255,8 +254,7 @@ grep '"loras"' models_table.csv | cut -d',' -f2
 ```bash
 # 从 CSV 中找到模型信息，然后：
 hf download "repo_id" "file_path" \
-  --local-dir /target/dir \
-  --local-dir-use-symlinks False
+  --local-dir /target/dir
 ```
 
 ### Q: 下载中断了怎么办？

@@ -16,13 +16,23 @@
 
 **旧命令**（已过时）：
 ```bash
-huggingface-cli download "repo_id" "file_path" --local-dir /path
+huggingface-cli download "repo_id" "file_path" \
+  --local-dir /path \
+  --local-dir-use-symlinks False \
+  --revision main
 ```
 
 **新命令**（推荐）：
 ```bash
-hf download "repo_id" "file_path" --local-dir /path
+hf download "repo_id" "file_path" \
+  --local-dir /path \
+  --revision main
 ```
+
+**主要变化**：
+- ✅ 命令从 `huggingface-cli` 改为 `hf`（更短）
+- ✅ 移除 `--local-dir-use-symlinks False` 参数（默认不使用符号链接）
+- ✅ 保留 `--local-dir` 和 `--revision` 参数
 
 #### 2. 脚本文件重命名
 

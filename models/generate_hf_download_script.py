@@ -207,7 +207,6 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
                 f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
-                f'--local-dir-use-symlinks False '
                 f'--revision {model["revision"]}'
             )
             

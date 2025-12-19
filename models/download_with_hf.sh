@@ -115,7 +115,7 @@ download_audio() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/audio_encoders/wav2vec2_large_english_fp16.safetensors" --local-dir "$TARGET_DIR/audio" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/audio_encoders/wav2vec2_large_english_fp16.safetensors" --local-dir "$TARGET_DIR/audio" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/audio/split_files/audio_encoders/wav2vec2_large_english_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/audio/wav2vec2_large_english_fp16.safetensors"
@@ -137,7 +137,7 @@ download_audio() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HuMo_ComfyUI" "split_files/audio_encoders/whisper_large_v3_fp16.safetensors" --local-dir "$TARGET_DIR/audio" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HuMo_ComfyUI" "split_files/audio_encoders/whisper_large_v3_fp16.safetensors" --local-dir "$TARGET_DIR/audio" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/audio/split_files/audio_encoders/whisper_large_v3_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/audio/whisper_large_v3_fp16.safetensors"
@@ -169,7 +169,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable_diffusion_2.1_repackaged" "512-inpainting-ema.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable_diffusion_2.1_repackaged" "512-inpainting-ema.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/512-inpainting-ema.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/512-inpainting-ema.safetensors"
@@ -191,7 +191,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Lykon/DreamShaper" "DreamShaper_8_pruned.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Lykon/DreamShaper" "DreamShaper_8_pruned.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/DreamShaper_8_pruned.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/DreamShaper_8_pruned.safetensors"
@@ -213,7 +213,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "duongve/NetaYume-Lumina-Image-2.0" "NetaYumev35_pretrained_all_in_one.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "duongve/NetaYume-Lumina-Image-2.0" "NetaYumev35_pretrained_all_in_one.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/NetaYumev35_pretrained_all_in_one.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/NetaYumev35_pretrained_all_in_one.safetensors"
@@ -235,7 +235,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/ACE-Step_ComfyUI_repackaged" "all_in_one/ace_step_v1_3.5b.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/ACE-Step_ComfyUI_repackaged" "all_in_one/ace_step_v1_3.5b.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/all_in_one/ace_step_v1_3.5b.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/ace_step_v1_3.5b.safetensors"
@@ -257,7 +257,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2-mv-turbo_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2-mv-turbo_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/split_files/hunyuan3d-dit-v2-mv-turbo_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/hunyuan3d-dit-v2-mv-turbo_fp16.safetensors"
@@ -279,7 +279,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2-mv_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2-mv_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/split_files/hunyuan3d-dit-v2-mv_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/hunyuan3d-dit-v2-mv_fp16.safetensors"
@@ -301,7 +301,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/hunyuan3D_2.0_repackaged" "split_files/hunyuan3d-dit-v2_fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/split_files/hunyuan3d-dit-v2_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/hunyuan3d-dit-v2_fp16.safetensors"
@@ -323,7 +323,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/hunyuan3D_2.1_repackaged" "hunyuan_3d_v2.1.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/hunyuan3D_2.1_repackaged" "hunyuan_3d_v2.1.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/hunyuan_3d_v2.1.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/hunyuan_3d_v2.1.safetensors"
@@ -345,7 +345,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Lightricks/LTX-Video" "ltx-video-2b-v0.9.5.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Lightricks/LTX-Video" "ltx-video-2b-v0.9.5.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/ltx-video-2b-v0.9.5.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/ltx-video-2b-v0.9.5.safetensors"
@@ -367,7 +367,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-diffusion-3.5-fp8" "sd3.5_large_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-diffusion-3.5-fp8" "sd3.5_large_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/sd3.5_large_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/sd3.5_large_fp8_scaled.safetensors"
@@ -389,7 +389,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "stabilityai/stable-diffusion-xl-base-1.0" "sd_xl_base_1.0.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "stabilityai/stable-diffusion-xl-base-1.0" "sd_xl_base_1.0.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/sd_xl_base_1.0.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/sd_xl_base_1.0.safetensors"
@@ -411,7 +411,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-audio-open-1.0_repackaged" "stable-audio-open-1.0.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-audio-open-1.0_repackaged" "stable-audio-open-1.0.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/stable-audio-open-1.0.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/stable-audio-open-1.0.safetensors"
@@ -433,7 +433,7 @@ download_checkpoints() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-diffusion-v1-5-archive" "v1-5-pruned-emaonly-fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-diffusion-v1-5-archive" "v1-5-pruned-emaonly-fp16.safetensors" --local-dir "$TARGET_DIR/checkpoints" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/checkpoints/v1-5-pruned-emaonly-fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/checkpoints/v1-5-pruned-emaonly-fp16.safetensors"
@@ -465,7 +465,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/byt5_small_glyphxl_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/byt5_small_glyphxl_fp16.safetensors"
@@ -487,7 +487,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/clip_g_hidream.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/clip_g_hidream.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/clip_g_hidream.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/clip_g_hidream.safetensors"
@@ -509,7 +509,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/flux_text_encoders" "clip_l.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/flux_text_encoders" "clip_l.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/clip_l.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/clip_l.safetensors"
@@ -531,7 +531,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/clip_l_hidream.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/clip_l_hidream.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/clip_l_hidream.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/clip_l_hidream.safetensors"
@@ -553,7 +553,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/llama_3.1_8b_instruct_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/text_encoders/llama_3.1_8b_instruct_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/llama_3.1_8b_instruct_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/llama_3.1_8b_instruct_fp8_scaled.safetensors"
@@ -575,7 +575,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux2-dev" "split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux2-dev" "split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/mistral_3_small_flux2_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/mistral_3_small_flux2_bf16.safetensors"
@@ -597,7 +597,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux2-dev" "split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux2-dev" "split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/mistral_3_small_flux2_fp8.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/mistral_3_small_flux2_fp8.safetensors"
@@ -619,7 +619,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/qwen_2.5_vl_7b_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/qwen_2.5_vl_7b_fp8_scaled.safetensors"
@@ -641,7 +641,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Omnigen2_ComfyUI_repackaged" "split_files/text_encoders/qwen_2.5_vl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Omnigen2_ComfyUI_repackaged" "split_files/text_encoders/qwen_2.5_vl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/qwen_2.5_vl_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/qwen_2.5_vl_fp16.safetensors"
@@ -663,7 +663,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/z_image_turbo" "split_files/text_encoders/qwen_3_4b.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/z_image_turbo" "split_files/text_encoders/qwen_3_4b.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/qwen_3_4b.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/qwen_3_4b.safetensors"
@@ -685,7 +685,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "ComfyUI-Wiki/t5-base" "t5-base.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "ComfyUI-Wiki/t5-base" "t5-base.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/t5-base.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/t5-base.safetensors"
@@ -707,7 +707,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/flux_text_encoders" "t5xxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/flux_text_encoders" "t5xxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/t5xxl_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/t5xxl_fp16.safetensors"
@@ -729,7 +729,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/flux_text_encoders" "t5xxl_fp8_e4m3fn_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/flux_text_encoders" "t5xxl_fp8_e4m3fn_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/t5xxl_fp8_e4m3fn_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/t5xxl_fp8_e4m3fn_scaled.safetensors"
@@ -751,7 +751,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/text_encoders/umt5_xxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/text_encoders/umt5_xxl_fp16.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/umt5_xxl_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/umt5_xxl_fp16.safetensors"
@@ -773,7 +773,7 @@ download_clip() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors" --local-dir "$TARGET_DIR/clip" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/clip/umt5_xxl_fp8_e4m3fn_scaled.safetensors"
@@ -805,7 +805,7 @@ download_clip_vision() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/clip_vision_g" "clip_vision_g.safetensors" --local-dir "$TARGET_DIR/clip_vision" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/clip_vision_g" "clip_vision_g.safetensors" --local-dir "$TARGET_DIR/clip_vision" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip_vision/clip_vision_g.safetensors"
             TARGET_FILE="$TARGET_DIR/clip_vision/clip_vision_g.safetensors"
@@ -827,7 +827,7 @@ download_clip_vision() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/clip_vision/clip_vision_h.safetensors" --local-dir "$TARGET_DIR/clip_vision" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/clip_vision/clip_vision_h.safetensors" --local-dir "$TARGET_DIR/clip_vision" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip_vision/split_files/clip_vision/clip_vision_h.safetensors"
             TARGET_FILE="$TARGET_DIR/clip_vision/clip_vision_h.safetensors"
@@ -849,7 +849,7 @@ download_clip_vision() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/sigclip_vision_384" "sigclip_vision_patch14_384.safetensors" --local-dir "$TARGET_DIR/clip_vision" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/sigclip_vision_384" "sigclip_vision_patch14_384.safetensors" --local-dir "$TARGET_DIR/clip_vision" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/clip_vision/sigclip_vision_patch14_384.safetensors"
             TARGET_FILE="$TARGET_DIR/clip_vision/sigclip_vision_patch14_384.safetensors"
@@ -881,7 +881,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image-InstantX-ControlNets" "split_files/controlnet/Qwen-Image-InstantX-ControlNet-Inpainting.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image-InstantX-ControlNets" "split_files/controlnet/Qwen-Image-InstantX-ControlNet-Inpainting.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/split_files/controlnet/Qwen-Image-InstantX-ControlNet-Inpainting.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/Qwen-Image-InstantX-ControlNet-Inpainting.safetensors"
@@ -903,7 +903,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/ControlNet-v1-1_fp16_safetensors" "control_v11f1p_sd15_depth_fp16.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/ControlNet-v1-1_fp16_safetensors" "control_v11f1p_sd15_depth_fp16.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/control_v11f1p_sd15_depth_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/control_v11f1p_sd15_depth_fp16.safetensors"
@@ -925,7 +925,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "comfyanonymous/ControlNet-v1-1_fp16_safetensors" "control_v11p_sd15_scribble_fp16.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "comfyanonymous/ControlNet-v1-1_fp16_safetensors" "control_v11p_sd15_scribble_fp16.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/control_v11p_sd15_scribble_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/control_v11p_sd15_scribble_fp16.safetensors"
@@ -947,7 +947,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image-DiffSynth-ControlNets" "split_files/model_patches/qwen_image_canny_diffsynth_controlnet.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image-DiffSynth-ControlNets" "split_files/model_patches/qwen_image_canny_diffsynth_controlnet.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/split_files/model_patches/qwen_image_canny_diffsynth_controlnet.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/qwen_image_canny_diffsynth_controlnet.safetensors"
@@ -969,7 +969,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_blur.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_blur.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/split_files/controlnet/sd3.5_large_controlnet_blur.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/sd3.5_large_controlnet_blur.safetensors"
@@ -991,7 +991,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_canny.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_canny.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/split_files/controlnet/sd3.5_large_controlnet_canny.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/sd3.5_large_controlnet_canny.safetensors"
@@ -1013,7 +1013,7 @@ download_controlnet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_depth.safetensors" --local-dir "$TARGET_DIR/controlnet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/stable-diffusion-3.5-controlnets_ComfyUI_repackaged" "split_files/controlnet/sd3.5_large_controlnet_depth.safetensors" --local-dir "$TARGET_DIR/controlnet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/controlnet/split_files/controlnet/sd3.5_large_controlnet_depth.safetensors"
             TARGET_FILE="$TARGET_DIR/controlnet/sd3.5_large_controlnet_depth.safetensors"
@@ -1045,7 +1045,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors"
@@ -1067,7 +1067,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Lightning-4steps-V1.0.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Lightning-4steps-V1.0.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Qwen-Image-Lightning-4steps-V1.0.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/Qwen-Image-Lightning-4steps-V1.0.safetensors"
@@ -1089,7 +1089,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Lightning-8steps-V1.0.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "lightx2v/Qwen-Image-Lightning" "Qwen-Image-Lightning-8steps-V1.0.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Qwen-Image-Lightning-8steps-V1.0.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/Qwen-Image-Lightning-8steps-V1.0.safetensors"
@@ -1111,7 +1111,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "Wan21_CausVid_14B_T2V_lora_rank32.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "Wan21_CausVid_14B_T2V_lora_rank32.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Wan21_CausVid_14B_T2V_lora_rank32.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/Wan21_CausVid_14B_T2V_lora_rank32.safetensors"
@@ -1133,7 +1133,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors"
@@ -1155,7 +1155,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "LoRAs/Wan22_relight/WanAnimate_relight_lora_fp16.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "LoRAs/Wan22_relight/WanAnimate_relight_lora_fp16.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/LoRAs/Wan22_relight/WanAnimate_relight_lora_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/WanAnimate_relight_lora_fp16.safetensors"
@@ -1177,7 +1177,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-dev" "split_files/loras/flux1-depth-dev-lora.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-dev" "split_files/loras/flux1-depth-dev-lora.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/flux1-depth-dev-lora.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/flux1-depth-dev-lora.safetensors"
@@ -1199,7 +1199,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "ostris/flux2_berthe_morisot" "flux2_berthe_morisot.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "ostris/flux2_berthe_morisot" "flux2_berthe_morisot.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/flux2_berthe_morisot.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/flux2_berthe_morisot.safetensors"
@@ -1221,7 +1221,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Lightx2v/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/lightx2v_I2V_14B_480p_cfg_step_distill_rank64_bf16.safetensors"
@@ -1243,7 +1243,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "Lightx2v/lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "Lightx2v/lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/Lightx2v/lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/lightx2v_T2V_14B_cfg_step_distill_v2_lora_rank64_bf16.safetensors"
@@ -1265,7 +1265,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "tarn59/pixel_art_style_lora_z_image_turbo" "pixel_art_style_z_image_turbo.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "tarn59/pixel_art_style_lora_z_image_turbo" "pixel_art_style_z_image_turbo.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/pixel_art_style_z_image_turbo.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/pixel_art_style_z_image_turbo.safetensors"
@@ -1287,7 +1287,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image-DiffSynth-ControlNets" "split_files/loras/qwen_image_union_diffsynth_lora.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image-DiffSynth-ControlNets" "split_files/loras/qwen_image_union_diffsynth_lora.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/qwen_image_union_diffsynth_lora.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/qwen_image_union_diffsynth_lora.safetensors"
@@ -1309,7 +1309,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors"
@@ -1331,7 +1331,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
@@ -1353,7 +1353,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_high_noise.safetensors"
@@ -1375,7 +1375,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/wan2.2_t2v_lightx2v_4steps_lora_v1.1_low_noise.safetensors"
@@ -1397,7 +1397,7 @@ download_loras() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/loras/wan_alpha_2.1_rgba_lora.safetensors" --local-dir "$TARGET_DIR/loras" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/loras/wan_alpha_2.1_rgba_lora.safetensors" --local-dir "$TARGET_DIR/loras" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/loras/split_files/loras/wan_alpha_2.1_rgba_lora.safetensors"
             TARGET_FILE="$TARGET_DIR/loras/wan_alpha_2.1_rgba_lora.safetensors"
@@ -1429,7 +1429,7 @@ download_style_models() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Flux1-Redux-Dev" "flux1-redux-dev.safetensors" --local-dir "$TARGET_DIR/style_models" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Flux1-Redux-Dev" "flux1-redux-dev.safetensors" --local-dir "$TARGET_DIR/style_models" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/style_models/flux1-redux-dev.safetensors"
             TARGET_FILE="$TARGET_DIR/style_models/flux1-redux-dev.safetensors"
@@ -1461,7 +1461,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "silveroxides/Chroma1-HD-fp8-scaled" "Chroma1-HD-fp8_scaled_rev2.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "silveroxides/Chroma1-HD-fp8-scaled" "Chroma1-HD-fp8_scaled_rev2.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/Chroma1-HD-fp8_scaled_rev2.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/Chroma1-HD-fp8_scaled_rev2.safetensors"
@@ -1483,7 +1483,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy_fp8_scaled" "WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy_fp8_scaled" "WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/WanMove/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/Wan21-WanMove_fp8_scaled_e4m3fn_KJ.safetensors"
@@ -1505,7 +1505,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy" "Wan2_1-I2V-ATI-14B_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy" "Wan2_1-I2V-ATI-14B_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/Wan2_1-I2V-ATI-14B_fp8_e4m3fn.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/Wan2_1-I2V-ATI-14B_fp8_e4m3fn.safetensors"
@@ -1527,7 +1527,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Kijai/WanVideo_comfy_fp8_scaled" "Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Kijai/WanVideo_comfy_fp8_scaled" "Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/Wan22Animate/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/Wan2_2-Animate-14B_fp8_e4m3fn_scaled_KJ.safetensors"
@@ -1549,7 +1549,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-dev" "split_files/diffusion_models/flux1-canny-dev.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-dev" "split_files/diffusion_models/flux1-canny-dev.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/flux1-canny-dev.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux1-canny-dev.safetensors"
@@ -1571,7 +1571,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-dev" "flux1-dev-fp8.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-dev" "flux1-dev-fp8.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/flux1-dev-fp8.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux1-dev-fp8.safetensors"
@@ -1593,7 +1593,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-dev" "flux1-dev.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-dev" "flux1-dev.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/flux1-dev.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux1-dev.safetensors"
@@ -1615,7 +1615,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-dev" "split_files/diffusion_models/flux1-fill-dev.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-dev" "split_files/diffusion_models/flux1-fill-dev.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/flux1-fill-dev.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux1-fill-dev.safetensors"
@@ -1637,7 +1637,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux1-schnell" "flux1-schnell.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux1-schnell" "flux1-schnell.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/flux1-schnell.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux1-schnell.safetensors"
@@ -1659,7 +1659,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux2-dev" "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux2-dev" "split_files/diffusion_models/flux2_dev_fp8mixed.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/flux2_dev_fp8mixed.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/flux2_dev_fp8mixed.safetensors"
@@ -1681,7 +1681,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_e1_full_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_e1_full_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hidream_e1_full_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hidream_e1_full_bf16.safetensors"
@@ -1703,7 +1703,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_i1_fast_fp8.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_i1_fast_fp8.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hidream_i1_fast_fp8.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hidream_i1_fast_fp8.safetensors"
@@ -1725,7 +1725,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_i1_full_fp8.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HiDream-I1_ComfyUI" "split_files/diffusion_models/hidream_i1_full_fp8.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hidream_i1_full_fp8.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hidream_i1_full_fp8.safetensors"
@@ -1747,7 +1747,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HuMo_ComfyUI" "split_files/diffusion_models/humo_17B_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HuMo_ComfyUI" "split_files/diffusion_models/humo_17B_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/humo_17B_fp8_e4m3fn.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/humo_17B_fp8_e4m3fn.safetensors"
@@ -1769,7 +1769,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_1080p_sr_distilled_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_1080p_sr_distilled_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hunyuanvideo1.5_1080p_sr_distilled_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hunyuanvideo1.5_1080p_sr_distilled_fp16.safetensors"
@@ -1791,7 +1791,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_720p_i2v_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_720p_i2v_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hunyuanvideo1.5_720p_i2v_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hunyuanvideo1.5_720p_i2v_fp16.safetensors"
@@ -1813,7 +1813,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_720p_t2v_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/diffusion_models/hunyuanvideo1.5_720p_t2v_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/hunyuanvideo1.5_720p_t2v_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/hunyuanvideo1.5_720p_t2v_fp16.safetensors"
@@ -1835,7 +1835,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Omnigen2_ComfyUI_repackaged" "split_files/diffusion_models/omnigen2_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Omnigen2_ComfyUI_repackaged" "split_files/diffusion_models/omnigen2_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/omnigen2_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/omnigen2_fp16.safetensors"
@@ -1857,7 +1857,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image-Edit_ComfyUI" "split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image-Edit_ComfyUI" "split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/qwen_image_edit_2509_fp8_e4m3fn.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/qwen_image_edit_2509_fp8_e4m3fn.safetensors"
@@ -1879,7 +1879,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image_ComfyUI" "split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image_ComfyUI" "split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/qwen_image_fp8_e4m3fn.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/qwen_image_fp8_e4m3fn.safetensors"
@@ -1901,7 +1901,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_flf2v_720p_14B_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_flf2v_720p_14B_fp16.safetensors"
@@ -1923,7 +1923,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_camera_v1.1_1.3B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_camera_v1.1_1.3B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_fun_camera_v1.1_1.3B_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_fun_camera_v1.1_1.3B_bf16.safetensors"
@@ -1945,7 +1945,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_camera_v1.1_14B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_camera_v1.1_14B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_fun_camera_v1.1_14B_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_fun_camera_v1.1_14B_bf16.safetensors"
@@ -1967,7 +1967,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_control_1.3B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_fun_control_1.3B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_fun_control_1.3B_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_fun_control_1.3B_bf16.safetensors"
@@ -1989,7 +1989,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_i2v_480p_14B_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_i2v_480p_14B_fp16.safetensors"
@@ -2011,7 +2011,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_t2v_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_t2v_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_t2v_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_t2v_14B_fp8_scaled.safetensors"
@@ -2033,7 +2033,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_vace_1.3B_fp16.safetensors"
@@ -2055,7 +2055,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.1_vace_14B_fp16.safetensors"
@@ -2077,7 +2077,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_camera_high_noise_14B_fp8_scaled.safetensors"
@@ -2099,7 +2099,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_camera_low_noise_14B_fp8_scaled.safetensors"
@@ -2121,7 +2121,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_5B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_5B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_control_5B_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_control_5B_bf16.safetensors"
@@ -2143,7 +2143,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_control_high_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_control_high_noise_14B_fp8_scaled.safetensors"
@@ -2165,7 +2165,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_control_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_control_low_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_control_low_noise_14B_fp8_scaled.safetensors"
@@ -2187,7 +2187,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_5B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_5B_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_inpaint_5B_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_inpaint_5B_bf16.safetensors"
@@ -2209,7 +2209,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_inpaint_high_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_inpaint_high_noise_14B_fp8_scaled.safetensors"
@@ -2231,7 +2231,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_fun_inpaint_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_fun_inpaint_low_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_fun_inpaint_low_noise_14B_fp8_scaled.safetensors"
@@ -2253,7 +2253,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
@@ -2275,7 +2275,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
@@ -2297,7 +2297,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_s2v_14B_fp8_scaled.safetensors"
@@ -2319,7 +2319,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_t2v_high_noise_14B_fp8_scaled.safetensors"
@@ -2341,7 +2341,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_t2v_low_noise_14B_fp8_scaled.safetensors"
@@ -2363,7 +2363,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/wan2.2_ti2v_5B_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/wan2.2_ti2v_5B_fp16.safetensors"
@@ -2385,7 +2385,7 @@ download_unet() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/z_image_turbo" "split_files/diffusion_models/z_image_turbo_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/z_image_turbo" "split_files/diffusion_models/z_image_turbo_bf16.safetensors" --local-dir "$TARGET_DIR/unet" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unet/split_files/diffusion_models/z_image_turbo_bf16.safetensors"
             TARGET_FILE="$TARGET_DIR/unet/z_image_turbo_bf16.safetensors"
@@ -2417,7 +2417,7 @@ download_unknown() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image-Edit_ComfyUI" "split_files/loras/Qwen-Image-Edit-2509-Relight.safetensors" --local-dir "$TARGET_DIR/unknown" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image-Edit_ComfyUI" "split_files/loras/Qwen-Image-Edit-2509-Relight.safetensors" --local-dir "$TARGET_DIR/unknown" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unknown/split_files/loras/Qwen-Image-Edit-2509-Relight.safetensors"
             TARGET_FILE="$TARGET_DIR/unknown/Qwen-Image-Edit-2509-Relight.safetensors"
@@ -2439,7 +2439,7 @@ download_unknown() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/lotus" "lotus-depth-d-v1-1.safetensors" --local-dir "$TARGET_DIR/unknown" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/lotus" "lotus-depth-d-v1-1.safetensors" --local-dir "$TARGET_DIR/unknown" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/unknown/lotus-depth-d-v1-1.safetensors"
             TARGET_FILE="$TARGET_DIR/unknown/lotus-depth-d-v1-1.safetensors"
@@ -2471,7 +2471,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/z_image_turbo" "split_files/vae/ae.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/z_image_turbo" "split_files/vae/ae.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/ae.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/ae.safetensors"
@@ -2493,7 +2493,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/flux2-dev" "split_files/vae/flux2-vae.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/flux2-dev" "split_files/vae/flux2-vae.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/flux2-vae.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/flux2-vae.safetensors"
@@ -2515,7 +2515,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/vae/hunyuanvideo15_vae_fp16.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/HunyuanVideo_1.5_repackaged" "split_files/vae/hunyuanvideo15_vae_fp16.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/hunyuanvideo15_vae_fp16.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/hunyuanvideo15_vae_fp16.safetensors"
@@ -2537,7 +2537,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Qwen-Image_ComfyUI" "split_files/vae/qwen_image_vae.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Qwen-Image_ComfyUI" "split_files/vae/qwen_image_vae.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/qwen_image_vae.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/qwen_image_vae.safetensors"
@@ -2559,7 +2559,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "stabilityai/sd-vae-ft-mse-original" "vae-ft-mse-840000-ema-pruned.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "stabilityai/sd-vae-ft-mse-original" "vae-ft-mse-840000-ema-pruned.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/vae-ft-mse-840000-ema-pruned.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/vae-ft-mse-840000-ema-pruned.safetensors"
@@ -2581,7 +2581,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/vae/wan2.2_vae.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.2_ComfyUI_Repackaged" "split_files/vae/wan2.2_vae.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/wan2.2_vae.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/wan2.2_vae.safetensors"
@@ -2603,7 +2603,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_2.1_vae.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_2.1_vae.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/wan_2.1_vae.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/wan_2.1_vae.safetensors"
@@ -2625,7 +2625,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_alpha_2.1_vae_alpha_channel.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_alpha_2.1_vae_alpha_channel.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/wan_alpha_2.1_vae_alpha_channel.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/wan_alpha_2.1_vae_alpha_channel.safetensors"
@@ -2647,7 +2647,7 @@ download_vae() {
         echo "      ✓ 已存在，跳过"
         ((SKIPPED++))
     else
-        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_alpha_2.1_vae_rgb_channel.safetensors" --local-dir "$TARGET_DIR/vae" --local-dir-use-symlinks False --revision main
+        hf download "Comfy-Org/Wan_2.1_ComfyUI_repackaged" "split_files/vae/wan_alpha_2.1_vae_rgb_channel.safetensors" --local-dir "$TARGET_DIR/vae" --revision main
         if [ $? -eq 0 ]; then
             SOURCE_FILE="$TARGET_DIR/vae/split_files/vae/wan_alpha_2.1_vae_rgb_channel.safetensors"
             TARGET_FILE="$TARGET_DIR/vae/wan_alpha_2.1_vae_rgb_channel.safetensors"
