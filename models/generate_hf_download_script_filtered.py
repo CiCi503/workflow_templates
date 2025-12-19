@@ -160,7 +160,9 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models',
             script_lines.append(f'# [{i}/{len(models_by_dir[directory])}] {model["name"]}')
             script_lines.append(f'echo "  下载: {model["name"]}"')
             
+            # 确保每个命令都使用镜像（通过前缀环境变量）
             cmd = (
+                f'HF_ENDPOINT="${{HF_ENDPOINT:-https://hf-mirror.com}}" '
                 f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
