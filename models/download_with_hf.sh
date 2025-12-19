@@ -46,7 +46,7 @@ SELECTED_DIRS=()
 
 # 设置 Hugging Face 镜像（国内用户）
 # 如果需要使用国内镜像，取消下面一行的注释:
-# export HF_ENDPOINT="https://hf-mirror.com"
+export HF_ENDPOINT="https://hf-mirror.com"
 # 或者从环境变量继承（如果已设置）
 if [ -n "$HF_ENDPOINT" ]; then
     echo "使用 Hugging Face 镜像: $HF_ENDPOINT"
