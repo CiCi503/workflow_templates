@@ -84,7 +84,7 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
     script_lines = [
         '#!/bin/bash',
         '#',
-        '# 使用 huggingface-cli 批量下载 ComfyUI 模型',
+        '# 使用 hf download 批量下载 ComfyUI 模型',
         '#',
         '# 安装依赖:',
         '#   pip install huggingface_hub',
@@ -95,17 +95,17 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
         '#',
         '# 使用方法:',
         '#   下载所有模型:',
-        '#     ./download_with_hf_cli.sh',
+        '#     ./download_with_hf.sh',
         '#',
         '#   只下载指定目录:',
-        '#     ./download_with_hf_cli.sh --dirs loras controlnet',
-        '#     ./download_with_hf_cli.sh -d unet clip vae',
+        '#     ./download_with_hf.sh --dirs loras controlnet',
+        '#     ./download_with_hf.sh -d unet clip vae',
         '#',
         '#   自定义目标目录:',
-        '#     ./download_with_hf_cli.sh --target-dir /custom/path',
+        '#     ./download_with_hf.sh --target-dir /custom/path',
         '#',
         '#   查看帮助:',
-        '#     ./download_with_hf_cli.sh --help',
+        '#     ./download_with_hf.sh --help',
         '#',
         '',
         f'DEFAULT_TARGET_DIR="{target_dir}"',
@@ -167,9 +167,9 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
         '    fi',
         'done',
         '',
-        '# 检查是否安装了 huggingface-cli',
-        'if ! command -v huggingface-cli &> /dev/null; then',
-        '    echo "错误: 未找到 huggingface-cli"',
+        '# 检查是否安装了 hf',
+        'if ! command -v hf &> /dev/null; then',
+        '    echo "错误: 未找到 hf 命令"',
         '    echo "请运行: pip install huggingface_hub"',
         '    exit 1',
         'fi',
@@ -204,7 +204,7 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
             script_lines.append(f'    echo "  [{i}/{len(dir_models)}] 下载: {model["name"]}"')
             
             cmd = (
-                f'huggingface-cli download "{model["repo_id"]}" '
+                f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
                 f'--local-dir-use-symlinks False '
@@ -289,7 +289,7 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
 
 def main():
     csv_file = 'models_table.csv'
-    output_file = 'download_with_hf_cli.sh'
+    output_file = 'download_with_hf.sh'
     
     if not Path(csv_file).exists():
         print(f"错误: 找不到 {csv_file}")

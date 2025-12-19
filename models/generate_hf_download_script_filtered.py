@@ -75,7 +75,7 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models',
     script_lines = [
         '#!/bin/bash',
         '#',
-        '# 使用 huggingface-cli 批量下载 ComfyUI 模型',
+        '# 使用 hf download 批量下载 ComfyUI 模型',
         '#',
     ]
     
@@ -94,9 +94,9 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models',
         '',
         f'TARGET_DIR="{target_dir}"',
         '',
-        '# 检查是否安装了 huggingface-cli',
-        'if ! command -v huggingface-cli &> /dev/null; then',
-        '    echo "错误: 未找到 huggingface-cli"',
+        '# 检查是否安装了 hf',
+        'if ! command -v hf &> /dev/null; then',
+        '    echo "错误: 未找到 hf 命令"',
         '    echo "请运行: pip install huggingface_hub"',
         '    exit 1',
         'fi',
@@ -138,7 +138,7 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models',
             script_lines.append(f'echo "  下载: {model["name"]}"')
             
             cmd = (
-                f'huggingface-cli download "{model["repo_id"]}" '
+                f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
                 f'--local-dir-use-symlinks False '
@@ -205,9 +205,9 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models',
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(description='生成 huggingface-cli 下载脚本')
+    parser = argparse.ArgumentParser(description='生成 hf download 下载脚本')
     parser.add_argument('--csv', default='models_table.csv', help='CSV 文件路径')
-    parser.add_argument('--output', '-o', default='download_with_hf_cli.sh', help='输出脚本路径')
+    parser.add_argument('--output', '-o', default='download_with_hf.sh', help='输出脚本路径')
     parser.add_argument('--target-dir', default='/root/dehui/models', help='目标目录')
     parser.add_argument('--dirs', '-d', nargs='+', help='只下载指定目录（例如: loras controlnet）')
     

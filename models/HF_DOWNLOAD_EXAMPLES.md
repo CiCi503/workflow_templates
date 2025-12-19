@@ -1,4 +1,4 @@
-# huggingface-cli 下载示例
+# hf download 下载示例
 
 ## 🎯 按目录下载模型
 
@@ -16,11 +16,11 @@ chmod +x download_loras_controlnet.sh
 
 ### 方法 2: 单个命令直接下载
 
-如果你只想下载几个模型，可以直接使用 `huggingface-cli` 命令：
+如果你只想下载几个模型，可以直接使用 `hf download` 命令：
 
 ```bash
 # 下载单个文件
-huggingface-cli download "Comfy-Org/flux1-dev" \
+hf download "Comfy-Org/flux1-dev" \
   "flux1-dev.safetensors" \
   --local-dir /root/dehui/models/unet \
   --local-dir-use-symlinks False
@@ -214,7 +214,7 @@ python3 generate_hf_download_script_filtered.py \
 
 ## 🔄 与 Python 脚本对比
 
-### huggingface-cli 方式（本方法）
+### hf download 方式（本方法）
 
 ```bash
 # 优点：
@@ -254,7 +254,7 @@ grep '"loras"' models_table.csv | cut -d',' -f2
 
 ```bash
 # 从 CSV 中找到模型信息，然后：
-huggingface-cli download "repo_id" "file_path" \
+hf download "repo_id" "file_path" \
   --local-dir /target/dir \
   --local-dir-use-symlinks False
 ```

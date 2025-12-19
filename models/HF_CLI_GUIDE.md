@@ -1,4 +1,4 @@
-# 使用 huggingface-cli 下载模型
+# 使用 hf download 批量下载模型
 
 ## 🚀 快速开始
 
@@ -24,205 +24,294 @@ export HF_TOKEN=your_huggingface_token
 
 ```bash
 # 赋予执行权限
-chmod +x download_with_hf_cli.sh
+chmod +x download_with_hf.sh
 
-# 执行下载
-./download_with_hf_cli.sh
+# 下载所有模型
+./download_with_hf.sh
+
+# 只下载指定目录
+./download_with_hf.sh --dirs loras controlnet
 ```
 
 ## 📋 脚本说明
 
 - **自动生成**: 脚本由 `generate_hf_download_script.py` 自动生成
-- **目标目录**: `/root/dehui/models`（可在脚本开头修改 `TARGET_DIR`）
+- **使用命令**: `hf download`（最新的 Hugging Face CLI 命令）
+- **默认目录**: `/root/dehui/models`（可通过参数修改）
 - **模型数量**: 112 个 Hugging Face 模型 + 4 个其他来源模型
 - **智能跳过**: 自动跳过已存在的文件
+- **参数支持**: 支持通过命令行参数指定目录和路径
 - **统计信息**: 显示成功/跳过/失败的数量
 
-## 🔄 修改目标目录
+## 📝 命令行参数
 
-编辑脚本开头的 `TARGET_DIR` 变量：
-
-```bash
-# 修改这一行
-TARGET_DIR="/your/custom/path"
-```
-
-或在运行时覆盖：
+### 基本语法
 
 ```bash
-TARGET_DIR="/custom/path" ./download_with_hf_cli.sh
+./download_with_hf.sh [选项]
 ```
 
-## 📊 下载统计
+### 可用参数
 
-| 来源 | 数量 | 说明 |
-|------|------|------|
-| **Hugging Face** | 112 | 使用 huggingface-cli 下载 |
-| **Civitai** | 4 | 需要手动下载 |
-| **无链接** | 14 | 需要查找来源 |
-| **总计** | 130 | - |
+| 参数 | 简写 | 说明 | 示例 |
+|------|------|------|------|
+| `--dirs` | `-d` | 指定要下载的目录 | `--dirs loras controlnet` |
+| `--target-dir` | `-t` | 指定下载目标目录 | `--target-dir /custom/path` |
+| `--help` | `-h` | 显示帮助信息 | `--help` |
+
+### 使用示例
+
+```bash
+# 查看帮助
+./download_with_hf.sh --help
+
+# 下载所有模型到默认目录
+./download_with_hf.sh
+
+# 只下载 loras
+./download_with_hf.sh --dirs loras
+
+# 下载多个目录
+./download_with_hf.sh --dirs loras controlnet clip_vision
+
+# 下载到自定义目录
+./download_with_hf.sh --target-dir /mnt/storage/models
+
+# 组合使用
+./download_with_hf.sh \
+  --dirs loras controlnet \
+  --target-dir /root/dehui/models
+```
+
+## 🗂️ 可用目录
+
+| 目录 | 模型数 | 大小估算 | 说明 |
+|------|--------|----------|------|
+| `audio` | 2 | ~1 GB | 音频编码器 |
+| `checkpoints` | 15 | ~50 GB | 完整检查点模型 |
+| `clip` | 15 | ~20 GB | CLIP 文本编码器 |
+| `clip_vision` | 3 | ~2 GB | CLIP 视觉编码器 |
+| `controlnet` | 7 | ~3 GB | ControlNet 模型 |
+| `loras` | 19 | ~5 GB | LoRA 微调模型 |
+| `style_models` | 1 | ~100 MB | 风格迁移模型 |
+| `unet` | 43 | ~100 GB | UNet 核心模型 |
+| `unknown` | 1 | ~100 MB | 其他模型 |
+| `vae` | 9 | ~5 GB | VAE 编解码器 |
+
+## 💡 使用场景
+
+### 场景 1: 快速测试
+
+```bash
+# 只下载小文件验证环境（3个文件，2GB，约3分钟）
+./download_with_hf.sh --dirs clip_vision
+```
+
+### 场景 2: 只下载 LoRA
+
+```bash
+# 下载 19 个 LoRA 模型（约 5GB，8分钟）
+./download_with_hf.sh --dirs loras
+```
+
+### 场景 3: FLUX 完整套件
+
+```bash
+# 下载 FLUX 必需组件（约 125GB，2-3小时）
+./download_with_hf.sh --dirs unet clip vae
+```
+
+### 场景 4: 轻量级组合
+
+```bash
+# 适合资源有限的环境（约 10GB）
+./download_with_hf.sh --dirs loras controlnet clip_vision
+```
+
+### 场景 5: 分批下载
+
+```bash
+# 第一批：小文件（10-15 分钟）
+./download_with_hf.sh --dirs loras controlnet clip_vision
+
+# 第二批：中等文件（30-40 分钟）
+./download_with_hf.sh --dirs clip vae
+
+# 第三批：大文件（按需，2-3 小时）
+./download_with_hf.sh --dirs unet checkpoints
+```
+
+## 🔧 高级功能
+
+### 断点续传
+
+脚本会自动检查文件是否已存在，如果存在则跳过。这意味着：
+
+- 可以安全中断和重启下载
+- 可以多次运行脚本补充新模型
+- 不会重复下载已有文件
+
+### 文件重命名
+
+脚本会自动处理 Hugging Face 的目录结构，将文件移动到正确位置：
+
+```bash
+# 下载后的文件路径: split_files/audio_encoders/model.safetensors
+# 自动重命名为: model.safetensors
+# 并清理空目录
+```
+
+### 实时统计
+
+下载完成后显示统计信息：
+
+```
+======================================
+下载完成!
+======================================
+成功: 15
+跳过: 10
+失败: 0
+总计: 25
+======================================
+```
 
 ## ⚠️ 其他来源模型
 
-以下 4 个模型来自 Civitai，需要手动下载：
+脚本运行后会列出 4 个来自 Civitai 的模型，需要手动下载：
 
 1. **architecturerealmix_v11.safetensors** (checkpoints)
-   ```
-   https://civitai.com/api/download/models/431755?type=Model&format=SafeTensor&size=full&fp=fp16
-   ```
-
 2. **dreamshaper_8.safetensors** (checkpoints)
-   ```
-   https://civitai.com/api/download/models/128713?type=Model&format=SafeTensor&size=pruned&fp=fp16
-   ```
-
 3. **MoXinV1.safetensors** (loras)
-   ```
-   https://civitai.com/api/download/models/14856?type=Model&format=SafeTensor&size=full&fp=fp16
-   ```
-
 4. **blindbox_v1_mix.safetensors** (loras)
-   ```
-   https://civitai.com/api/download/models/32988?type=Model&format=SafeTensor&size=full&fp=fp16
-   ```
 
-手动下载后放到对应目录：
+这些模型会在脚本末尾显示下载链接。
+
+## 🔄 重新生成脚本
+
+如果需要修改脚本（如更改默认目录），可以重新生成：
+
 ```bash
-# 示例
-wget -O /root/dehui/models/checkpoints/architecturerealmix_v11.safetensors \
-  "https://civitai.com/api/download/models/431755?type=Model&format=SafeTensor&size=full&fp=fp16"
+# 重新生成脚本
+python3 generate_hf_download_script.py
+
+# 生成只包含指定目录的脚本
+python3 generate_hf_download_script_filtered.py \
+  --dirs loras controlnet \
+  -o download_custom.sh
 ```
 
-## 💡 优势对比
+## 📊 `hf download` vs `huggingface-cli download`
 
-### huggingface-cli 的优势
+### 为什么使用 `hf download`？
 
-| 特性 | huggingface-cli | download_models_simple.py |
-|------|-----------------|---------------------------|
-| **依赖** | 需要 huggingface_hub | 只需 Python 标准库 |
-| **速度** | 较快，官方工具优化 | 中等 |
-| **断点续传** | ✅ 原生支持 | ✅ 手动实现 |
-| **并发下载** | ✅ 自动优化 | ✅ 可选（--parallel） |
-| **进度显示** | ✅ 详细 | ✅ 基础 |
-| **缓存管理** | ✅ 自动管理 | ❌ 无 |
-| **适用范围** | 仅 Hugging Face | 所有来源 |
+| 特性 | `hf download` | `huggingface-cli download` |
+|------|---------------|----------------------------|
+| 状态 | ✅ 最新推荐 | ⚠️ 已过时 |
+| 命令长度 | 更短 | 更长 |
+| 功能 | 完整支持 | 功能相同 |
 
-### 推荐使用场景
-
-- **使用 huggingface-cli**: 
-  - 只需要 Hugging Face 模型
-  - 追求下载速度
-  - 需要官方工具的稳定性
-
-- **使用 download_models_simple.py**:
-  - 需要下载所有来源的模型
-  - 不想安装额外依赖
-  - 需要自定义下载逻辑
-
-## 🔧 高级用法
-
-### 只下载特定目录
-
-编辑脚本，注释掉不需要的部分：
+### 命令对比
 
 ```bash
-# 例如只下载 audio 和 clip
-# 注释掉其他目录的部分
+# 新命令（推荐）
+hf download "repo_id" "file_path" --local-dir /path
+
+# 旧命令（已过时）
+huggingface-cli download "repo_id" "file_path" --local-dir /path
 ```
 
-### 并发下载（使用 xargs）
+## 🛠️ 故障排查
+
+### 问题 1: 找不到 `hf` 命令
 
 ```bash
-# 提取所有 huggingface-cli 命令
-grep "^    huggingface-cli" download_with_hf_cli.sh > commands.txt
-
-# 并发执行（4个任务）
-cat commands.txt | xargs -P 4 -I {} bash -c "{}"
+# 确保安装了最新版本
+pip install --upgrade huggingface_hub
 ```
 
-### 使用镜像站点
+### 问题 2: 权限错误
 
 ```bash
-# 设置 Hugging Face 镜像
+# 检查目标目录权限
+ls -ld /root/dehui/models
+
+# 如果需要，创建目录
+mkdir -p /root/dehui/models
+```
+
+### 问题 3: Token 认证失败
+
+```bash
+# 方式 1: 重新登录
+huggingface-cli login
+
+# 方式 2: 设置环境变量
+export HF_TOKEN=your_token_here
+```
+
+### 问题 4: 下载速度慢
+
+考虑使用镜像或代理：
+
+```bash
+# 设置镜像
 export HF_ENDPOINT=https://hf-mirror.com
 
-./download_with_hf_cli.sh
+# 然后运行脚本
+./download_with_hf.sh --dirs loras
 ```
 
-## 🆚 两种方式对比
-
-### 方式 1: huggingface-cli（本脚本）
+### 问题 5: 磁盘空间不足
 
 ```bash
-# 优点
-✓ 官方工具，稳定性好
-✓ 下载速度快
-✓ 自动管理缓存
-✓ 原生断点续传
+# 检查磁盘空间
+df -h /root/dehui/models
 
-# 缺点
-✗ 需要安装 huggingface_hub
-✗ 仅支持 Hugging Face
-✗ 4 个 Civitai 模型需要手动下载
+# 只下载小文件
+./download_with_hf.sh --dirs loras controlnet clip_vision
 ```
 
-### 方式 2: download_models_simple.py
+## 📖 相关文档
+
+- `SHELL_SCRIPT_USAGE.md` - 详细使用指南
+- `QUICK_REFERENCE.md` - 快速参考卡
+- `HF_DOWNLOAD_EXAMPLES.md` - 更多使用示例
+- `MODELS_TABLE.md` - 完整模型列表
+
+## 💬 常见问题
+
+### Q: 如何只下载单个模型？
+
+使用 `--dirs` 参数指定目录，然后手动停止：
 
 ```bash
-# 优点
-✓ 无需额外依赖
-✓ 支持所有来源（HF + Civitai）
-✓ 可选并发下载
-✓ 自定义控制更灵活
-
-# 缺点
-✗ 速度相对较慢
-✗ 需要手动实现一些功能
+./download_with_hf.sh --dirs loras
+# 等待需要的模型下载完成后按 Ctrl+C
 ```
 
-## 📝 重新生成脚本
+### Q: 可以并发下载吗？
 
-如果 `models_table.csv` 更新了，重新生成脚本：
+当前脚本是串行下载。如果需要并发，可以：
 
-```bash
-python3 generate_hf_download_script.py
-```
+1. 分批运行多个脚本实例（不同目录）
+2. 或使用 Python 脚本的并发模式
 
-可以修改脚本中的 `target_dir` 参数：
+### Q: 如何查看下载进度？
 
-```python
-# 在 generate_hf_download_script.py 中修改
-generate_bash_script(csv_file, output_file, target_dir='/your/path')
-```
+`hf download` 会显示进度条，包括：
+- 当前文件名
+- 下载进度百分比
+- 下载速度
+- 预计剩余时间
 
-## 🎯 推荐流程
+### Q: 下载失败会怎样？
 
-1. **大部分模型用 huggingface-cli** (快速)
-   ```bash
-   ./download_with_hf_cli.sh
-   ```
-
-2. **Civitai 模型单独下载**
-   ```bash
-   cd /root/dehui/models
-   # 下载 4 个 Civitai 模型（见上面列表）
-   ```
-
-3. **或者全用 Python 脚本** (一键全搞定)
-   ```bash
-   python3 download_models_simple.py -o /root/dehui/models --parallel
-   ```
-
-## ✅ 验证下载
-
-```bash
-# 检查文件数量
-find /root/dehui/models -name "*.safetensors" | wc -l
-
-# 应该有 116 个文件（112 HF + 4 Civitai）
-```
+- 脚本会记录失败次数
+- 继续下载下一个模型
+- 最后显示失败统计
+- 可以重新运行脚本下载失败的模型
 
 ---
 
-**提示**: 两种方法都支持断点续传，可以随时中断和恢复下载。
-
+**提示**: 建议先下载小文件目录（如 `loras`、`controlnet`）测试环境，确认无误后再下载大文件。

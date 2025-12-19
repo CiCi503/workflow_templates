@@ -2,14 +2,14 @@
 
 ## 🎯 新功能
 
-`download_with_hf_cli.sh` 现在支持通过命令行参数指定要下载的目录！
+`download_with_hf.sh` 现在支持通过命令行参数指定要下载的目录！
 
 ## 📋 基本用法
 
 ### 1. 下载所有模型（默认行为）
 
 ```bash
-./download_with_hf_cli.sh
+./download_with_hf.sh
 ```
 
 这会下载所有 112 个 Hugging Face 模型到 `/root/dehui/models`。
@@ -18,23 +18,23 @@
 
 ```bash
 # 只下载 loras 和 controlnet
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 
 # 使用短选项
-./download_with_hf_cli.sh -d loras controlnet
+./download_with_hf.sh -d loras controlnet
 
 # 只下载 FLUX 核心组件
-./download_with_hf_cli.sh --dirs unet clip vae
+./download_with_hf.sh --dirs unet clip vae
 ```
 
 ### 3. 自定义目标目录
 
 ```bash
 # 下载到自定义路径
-./download_with_hf_cli.sh --target-dir /custom/path
+./download_with_hf.sh --target-dir /custom/path
 
 # 组合使用：指定目录和目标路径
-./download_with_hf_cli.sh \
+./download_with_hf.sh \
   --dirs loras controlnet \
   --target-dir /root/dehui/models
 ```
@@ -42,7 +42,7 @@
 ### 4. 查看帮助
 
 ```bash
-./download_with_hf_cli.sh --help
+./download_with_hf.sh --help
 ```
 
 ## 🗂️ 可用目录
@@ -66,48 +66,48 @@
 
 ```bash
 # 下载小文件，快速验证环境（约 10GB，15 分钟）
-./download_with_hf_cli.sh --dirs loras controlnet clip_vision
+./download_with_hf.sh --dirs loras controlnet clip_vision
 ```
 
 ### 场景 2: FLUX 开发环境
 
 ```bash
 # 下载 FLUX 必需组件（约 125GB，3-4 小时）
-./download_with_hf_cli.sh --dirs unet clip vae
+./download_with_hf.sh --dirs unet clip vae
 ```
 
 ### 场景 3: 只要 LoRA
 
 ```bash
 # 只下载 LoRA 模型（19 个，约 5GB，8 分钟）
-./download_with_hf_cli.sh --dirs loras
+./download_with_hf.sh --dirs loras
 ```
 
 ### 场景 4: 轻量级套装
 
 ```bash
 # 适合资源有限的环境（约 10GB）
-./download_with_hf_cli.sh --dirs loras controlnet clip_vision
+./download_with_hf.sh --dirs loras controlnet clip_vision
 ```
 
 ### 场景 5: 分批下载
 
 ```bash
 # 第一批：小文件（快速测试）
-./download_with_hf_cli.sh --dirs loras controlnet clip_vision
+./download_with_hf.sh --dirs loras controlnet clip_vision
 
 # 第二批：中等文件
-./download_with_hf_cli.sh --dirs clip vae
+./download_with_hf.sh --dirs clip vae
 
 # 第三批：大文件（需要时间）
-./download_with_hf_cli.sh --dirs unet checkpoints
+./download_with_hf.sh --dirs unet checkpoints
 ```
 
 ### 场景 6: 自定义安装路径
 
 ```bash
 # 下载到自定义路径
-./download_with_hf_cli.sh \
+./download_with_hf.sh \
   --dirs loras controlnet \
   --target-dir /mnt/storage/comfyui/models
 ```
@@ -118,7 +118,7 @@
 
 ```bash
 # 完整示例：指定目录和目标路径
-./download_with_hf_cli.sh \
+./download_with_hf.sh \
   --dirs loras controlnet unet \
   --target-dir /custom/models
 ```
@@ -127,7 +127,7 @@
 
 ```bash
 # -d 代替 --dirs，-t 代替 --target-dir
-./download_with_hf_cli.sh -d loras controlnet -t /custom/path
+./download_with_hf.sh -d loras controlnet -t /custom/path
 ```
 
 ## ⚠️ 注意事项
@@ -136,10 +136,10 @@
 
 ```bash
 # ✓ 正确
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 
 # ✗ 错误（会提示错误）
-./download_with_hf_cli.sh --dirs lora control_net
+./download_with_hf.sh --dirs lora control_net
 ```
 
 ### 2. 自动跳过已存在的文件
@@ -157,18 +157,18 @@ huggingface-cli login
 
 # 方式 2: 环境变量
 export HF_TOKEN=your_token_here
-./download_with_hf_cli.sh --dirs loras
+./download_with_hf.sh --dirs loras
 ```
 
 ## 📊 参数对比
 
 | 功能 | 命令 |
 |------|------|
-| 下载所有模型 | `./download_with_hf_cli.sh` |
-| 下载单个目录 | `./download_with_hf_cli.sh --dirs loras` |
-| 下载多个目录 | `./download_with_hf_cli.sh --dirs loras controlnet` |
-| 自定义路径 | `./download_with_hf_cli.sh --target-dir /path` |
-| 查看帮助 | `./download_with_hf_cli.sh --help` |
+| 下载所有模型 | `./download_with_hf.sh` |
+| 下载单个目录 | `./download_with_hf.sh --dirs loras` |
+| 下载多个目录 | `./download_with_hf.sh --dirs loras controlnet` |
+| 自定义路径 | `./download_with_hf.sh --target-dir /path` |
+| 查看帮助 | `./download_with_hf.sh --help` |
 
 ## 🚀 推荐下载策略
 
@@ -176,39 +176,39 @@ export HF_TOKEN=your_token_here
 
 ```bash
 # 阶段 1: 小文件（10-15 分钟）
-./download_with_hf_cli.sh --dirs loras controlnet clip_vision
+./download_with_hf.sh --dirs loras controlnet clip_vision
 
 # 阶段 2: 中等文件（30-40 分钟）
-./download_with_hf_cli.sh --dirs clip vae
+./download_with_hf.sh --dirs clip vae
 
 # 阶段 3: 大文件（按需，2-3 小时）
-./download_with_hf_cli.sh --dirs unet checkpoints
+./download_with_hf.sh --dirs unet checkpoints
 ```
 
 ### 策略 2: 按功能分批
 
 ```bash
 # 基础组件
-./download_with_hf_cli.sh --dirs clip vae
+./download_with_hf.sh --dirs clip vae
 
 # 扩展功能
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 
 # 核心模型
-./download_with_hf_cli.sh --dirs unet
+./download_with_hf.sh --dirs unet
 ```
 
 ### 策略 3: 按用途分批
 
 ```bash
 # 文本生成相关
-./download_with_hf_cli.sh --dirs clip unet vae
+./download_with_hf.sh --dirs clip unet vae
 
 # 图像控制相关
-./download_with_hf_cli.sh --dirs controlnet loras
+./download_with_hf.sh --dirs controlnet loras
 
 # 多模态相关
-./download_with_hf_cli.sh --dirs clip_vision audio
+./download_with_hf.sh --dirs clip_vision audio
 ```
 
 ## 🔄 与旧版本对比
@@ -217,20 +217,20 @@ export HF_TOKEN=your_token_here
 
 ```bash
 # 只能下载所有模型，或者手动编辑脚本
-./download_with_hf_cli.sh
+./download_with_hf.sh
 ```
 
 ### 新版本（支持参数）
 
 ```bash
 # 灵活指定要下载的目录
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 
 # 自定义目标路径
-./download_with_hf_cli.sh --target-dir /custom/path
+./download_with_hf.sh --target-dir /custom/path
 
 # 查看帮助
-./download_with_hf_cli.sh --help
+./download_with_hf.sh --help
 ```
 
 ## 🆚 两种下载方式对比
@@ -238,7 +238,7 @@ export HF_TOKEN=your_token_here
 ### 方式 1: Shell 脚本（本方式）
 
 ```bash
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 ```
 
 **优点:**
@@ -271,25 +271,25 @@ python3 download_models_simple.py -o /root/dehui/models --parallel
 ### Q1: 如何只下载单个目录？
 
 ```bash
-./download_with_hf_cli.sh --dirs loras
+./download_with_hf.sh --dirs loras
 ```
 
 ### Q2: 如何下载多个目录？
 
 ```bash
-./download_with_hf_cli.sh --dirs loras controlnet clip
+./download_with_hf.sh --dirs loras controlnet clip
 ```
 
 ### Q3: 如何修改下载目录？
 
 ```bash
-./download_with_hf_cli.sh --target-dir /your/custom/path
+./download_with_hf.sh --target-dir /your/custom/path
 ```
 
 ### Q4: 如何查看所有可用目录？
 
 ```bash
-./download_with_hf_cli.sh --help
+./download_with_hf.sh --help
 ```
 
 ### Q5: 下载中断了怎么办？
@@ -301,7 +301,7 @@ python3 download_models_simple.py -o /root/dehui/models --parallel
 可以！
 
 ```bash
-./download_with_hf_cli.sh \
+./download_with_hf.sh \
   --dirs loras controlnet \
   --target-dir /custom/path
 ```
@@ -332,23 +332,23 @@ python3 download_models_simple.py -o /root/dehui/models --parallel
 
 ```bash
 # 1. 先看帮助
-./download_with_hf_cli.sh --help
+./download_with_hf.sh --help
 
 # 2. 测试下载小文件
-./download_with_hf_cli.sh --dirs clip_vision
+./download_with_hf.sh --dirs clip_vision
 
 # 3. 下载常用组件
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 ```
 
 ### 进阶用户
 
 ```bash
 # 按需组合目录
-./download_with_hf_cli.sh --dirs unet clip vae loras
+./download_with_hf.sh --dirs unet clip vae loras
 
 # 自定义路径
-./download_with_hf_cli.sh \
+./download_with_hf.sh \
   --dirs loras controlnet \
   --target-dir /mnt/ssd/models
 ```
@@ -358,7 +358,7 @@ python3 download_models_simple.py -o /root/dehui/models --parallel
 ```bash
 # 脚本化批量下载
 for dir in loras controlnet clip; do
-    ./download_with_hf_cli.sh --dirs $dir
+    ./download_with_hf.sh --dirs $dir
     echo "完成: $dir"
 done
 ```

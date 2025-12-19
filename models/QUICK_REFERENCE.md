@@ -4,19 +4,19 @@
 
 ```bash
 # 查看帮助
-./download_with_hf_cli.sh --help
+./download_with_hf.sh --help
 
 # 下载所有模型
-./download_with_hf_cli.sh
+./download_with_hf.sh
 
 # 下载指定目录
-./download_with_hf_cli.sh --dirs loras controlnet
+./download_with_hf.sh --dirs loras controlnet
 
 # 自定义路径
-./download_with_hf_cli.sh --target-dir /root/dehui/models
+./download_with_hf.sh --target-dir /root/dehui/models
 
 # 组合使用
-./download_with_hf_cli.sh --dirs loras --target-dir /root/dehui/models
+./download_with_hf.sh --dirs loras --target-dir /root/dehui/models
 ```
 
 ## 可用目录
@@ -48,13 +48,13 @@ loras          style_models     unet             unknown          vae
 
 ```bash
 # 只下载 loras
-./download_with_hf_cli.sh --dirs loras --target-dir /root/dehui/models
+./download_with_hf.sh --dirs loras --target-dir /root/dehui/models
 
 # 下载多个目录
-./download_with_hf_cli.sh --dirs loras controlnet --target-dir /root/dehui/models
+./download_with_hf.sh --dirs loras controlnet --target-dir /root/dehui/models
 
 # FLUX 套件
-./download_with_hf_cli.sh --dirs unet clip vae --target-dir /root/dehui/models
+./download_with_hf.sh --dirs unet clip vae --target-dir /root/dehui/models
 ```
 
 ## 错误处理
@@ -67,7 +67,7 @@ loras          style_models     unet             unknown          vae
 ## 前置要求
 
 ```bash
-# 1. 安装 huggingface-cli
+# 1. 安装 hf 命令
 pip install huggingface_hub
 
 # 2. 登录（二选一）
