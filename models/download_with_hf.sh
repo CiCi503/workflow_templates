@@ -9,6 +9,10 @@
 #   export HF_TOKEN=your_token_here
 #   或: huggingface-cli login
 #
+# 使用国内镜像（可选）:
+#   export HF_ENDPOINT="https://hf-mirror.com"
+#   或在脚本内设置（见下方 HF_ENDPOINT 变量）
+#
 # 使用方法:
 #   下载所有模型:
 #     ./download_with_hf.sh
@@ -24,10 +28,29 @@
 #     ./download_with_hf.sh --help
 #
 
+# 加载用户的 shell 配置（包含环境变量）
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
+if [ -f ~/.zshrc ]; then
+    source ~/.zshrc
+fi
+
 DEFAULT_TARGET_DIR="/root/dehui/models"
 TARGET_DIR="$DEFAULT_TARGET_DIR"
 ALL_DIRS=(audio checkpoints clip clip_vision controlnet loras style_models unet unknown vae)
 SELECTED_DIRS=()
+
+# 设置 Hugging Face 镜像（国内用户）
+# 如果需要使用国内镜像，取消下面一行的注释:
+# export HF_ENDPOINT="https://hf-mirror.com"
+# 或者从环境变量继承（如果已设置）
+if [ -n "$HF_ENDPOINT" ]; then
+    echo "使用 Hugging Face 镜像: $HF_ENDPOINT"
+fi
 
 # 解析命令行参数
 while [[ $# -gt 0 ]]; do
@@ -59,6 +82,10 @@ while [[ $# -gt 0 ]]; do
             echo "  $0 --dirs loras controlnet      # 只下载 loras 和 controlnet"
             echo "  $0 -d unet clip vae             # 只下载 unet、clip 和 vae"
             echo "  $0 --target-dir /custom/path    # 下载到自定义目录"
+            echo ""
+            echo "国内镜像设置:"
+            echo "  编辑脚本，取消注释: export HF_ENDPOINT=\"https://hf-mirror.com\""
+            echo "  或运行: HF_ENDPOINT=\"https://hf-mirror.com\" $0 --dirs loras"
             exit 0
             ;;
         *)
