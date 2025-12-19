@@ -14,6 +14,8 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from urllib.parse import urlparse
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
 # Hugging Face Token - 从环境变量获取
 # 设置方式: export HF_TOKEN=your_token_here
@@ -155,7 +157,47 @@ class ModelDownloader:
         
         return False
     
-    def process_csv(self, csv_file, directories=None, dry_run=False, skip_existing=True):
+    def _download_single_model(self, model, index, total, skip_existing, lock, counters):
+        """
+        下载单个模型（用于并发下载）
+        
+        Args:
+            model: 模型信息字典
+            index: 模型索引
+            total: 总模型数
+            skip_existing: 是否跳过已存在的文件
+            lock: 线程锁
+            counters: 计数器字典 {'success': 0, 'skip': 0, 'fail': 0}
+        """
+        directory = model['directory']
+        model_name = model['name']
+        url = model['url']
+        
+        # 目标路径
+        target_dir = self.base_dir / directory
+        target_path = target_dir / model_name
+        
+        # 线程安全地打印
+        with lock:
+            print(f"\n[{index}/{total}] {model_name}")
+            print(f"  目录: {directory}")
+        
+        # 检查是否已存在
+        if skip_existing and target_path.exists():
+            with lock:
+                print(f"  ✓ 文件已存在，跳过")
+                counters['skip'] += 1
+            return
+        
+        # 下载
+        if self.download_file(url, target_path):
+            with lock:
+                counters['success'] += 1
+        else:
+            with lock:
+                counters['fail'] += 1
+    
+    def process_csv(self, csv_file, directories=None, dry_run=False, skip_existing=True, parallel=False, max_workers=3):
         """
         处理 CSV 文件，批量下载模型
         
@@ -164,6 +206,8 @@ class ModelDownloader:
             directories: 指定要下载的目录列表（None 表示全部）
             dry_run: 是否只显示将要下载的文件，不实际下载
             skip_existing: 是否跳过已存在的文件
+            parallel: 是否使用并发下载
+            max_workers: 并发下载的最大线程数
         """
         if not Path(csv_file).exists():
             print(f"错误: 找不到文件 {csv_file}")
@@ -210,46 +254,71 @@ class ModelDownloader:
             return
         
         # 统计信息
-        success_count = 0
-        skip_count = 0
-        fail_count = 0
+        counters = {'success': 0, 'skip': 0, 'fail': 0}
+        lock = threading.Lock()
         
         # 开始下载
         print("\n" + "="*80)
-        print("开始下载模型...")
+        if parallel:
+            print(f"开始并发下载模型（{max_workers} 个线程）...")
+        else:
+            print("开始下载模型...")
         print("="*80 + "\n")
         
-        for i, model in enumerate(models_to_download, 1):
-            directory = model['directory']
-            model_name = model['name']
-            url = model['url']
-            
-            print(f"\n[{i}/{len(models_to_download)}] {model_name}")
-            print(f"  目录: {directory}")
-            
-            # 目标路径
-            target_dir = self.base_dir / directory
-            target_path = target_dir / model_name
-            
-            # 检查是否已存在
-            if skip_existing and target_path.exists():
-                print(f"  ✓ 文件已存在，跳过")
-                skip_count += 1
-                continue
-            
-            # 下载
-            if self.download_file(url, target_path):
-                success_count += 1
-            else:
-                fail_count += 1
+        if parallel:
+            # 并发下载
+            with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                # 提交所有下载任务
+                futures = []
+                for i, model in enumerate(models_to_download, 1):
+                    future = executor.submit(
+                        self._download_single_model,
+                        model, i, len(models_to_download),
+                        skip_existing, lock, counters
+                    )
+                    futures.append(future)
+                
+                # 等待所有任务完成
+                for future in as_completed(futures):
+                    try:
+                        future.result()
+                    except Exception as e:
+                        with lock:
+                            print(f"  ✗ 下载出错: {e}")
+                            counters['fail'] += 1
+        else:
+            # 串行下载
+            for i, model in enumerate(models_to_download, 1):
+                directory = model['directory']
+                model_name = model['name']
+                url = model['url']
+                
+                print(f"\n[{i}/{len(models_to_download)}] {model_name}")
+                print(f"  目录: {directory}")
+                
+                # 目标路径
+                target_dir = self.base_dir / directory
+                target_path = target_dir / model_name
+                
+                # 检查是否已存在
+                if skip_existing and target_path.exists():
+                    print(f"  ✓ 文件已存在，跳过")
+                    counters['skip'] += 1
+                    continue
+                
+                # 下载
+                if self.download_file(url, target_path):
+                    counters['success'] += 1
+                else:
+                    counters['fail'] += 1
         
         # 显示统计
         print("\n" + "="*80)
         print("下载完成!")
         print("="*80)
-        print(f"✓ 成功: {success_count}")
-        print(f"⊙ 跳过: {skip_count}")
-        print(f"✗ 失败: {fail_count}")
+        print(f"✓ 成功: {counters['success']}")
+        print(f"⊙ 跳过: {counters['skip']}")
+        print(f"✗ 失败: {counters['fail']}")
         print(f"═ 总计: {len(models_to_download)}")
         print("="*80)
 
@@ -279,6 +348,12 @@ def main():
 
   # 强制重新下载
   python3 download_models_simple.py --no-skip-existing
+
+  # 并发下载（3个线程）
+  python3 download_models_simple.py --parallel
+
+  # 并发下载（指定5个线程）
+  python3 download_models_simple.py --parallel --workers 5
         """
     )
     
@@ -312,6 +387,19 @@ def main():
         help='不跳过已存在的文件，强制重新下载'
     )
     
+    parser.add_argument(
+        '--parallel', '-p',
+        action='store_true',
+        help='启用并发下载（默认关闭，串行下载）'
+    )
+    
+    parser.add_argument(
+        '--workers', '-w',
+        type=int,
+        default=3,
+        help='并发下载的线程数（默认: 3，仅在 --parallel 时有效）'
+    )
+    
     args = parser.parse_args()
     
     # 检查 HF_TOKEN
@@ -330,7 +418,9 @@ def main():
             csv_file=args.csv,
             directories=args.dirs,
             dry_run=args.dry_run,
-            skip_existing=not args.no_skip_existing
+            skip_existing=not args.no_skip_existing,
+            parallel=args.parallel,
+            max_workers=args.workers
         )
     except KeyboardInterrupt:
         print("\n\n用户中断下载")
