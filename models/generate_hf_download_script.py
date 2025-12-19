@@ -127,6 +127,8 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
         'TARGET_DIR="$DEFAULT_TARGET_DIR"',
         f'ALL_DIRS=({" ".join(all_dirs)})',
         'SELECTED_DIRS=()',
+        'MAX_RETRIES=3  # 默认重试3次',
+        'RETRY_DELAY=5  # 重试间隔5秒',
         '',
         '# 设置 Hugging Face 镜像（国内用户）',
         '# 如果需要使用国内镜像，取消下面一行的注释:',
@@ -150,12 +152,17 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
         '            TARGET_DIR="$2"',
         '            shift 2',
         '            ;;',
+        '        -r|--retry)',
+        '            MAX_RETRIES="$2"',
+        '            shift 2',
+        '            ;;',
         '        -h|--help)',
         '            echo "使用方法: $0 [选项]"',
         '            echo ""',
         '            echo "选项:"',
         '            echo "  -d, --dirs <目录...>     只下载指定目录的模型"',
         '            echo "  -t, --target-dir <路径>  指定下载目标目录（默认: $DEFAULT_TARGET_DIR）"',
+        '            echo "  -r, --retry <次数>       下载失败时的重试次数（默认: 3）"',
         '            echo "  -h, --help              显示此帮助信息"',
         '            echo ""',
         '            echo "可用目录:"',
@@ -230,9 +237,8 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
             script_lines.append(f'    # [{i}/{len(dir_models)}] {model["name"]}')
             script_lines.append(f'    echo "  [{i}/{len(dir_models)}] 下载: {model["name"]}"')
             
-            # 确保每个命令都使用镜像（通过前缀环境变量）
+            # 下载命令（依赖脚本开头的 export HF_ENDPOINT）
             cmd = (
-                f'HF_ENDPOINT="${{HF_ENDPOINT:-https://hf-mirror.com}}" '
                 f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
@@ -243,18 +249,38 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
             script_lines.append(f'        echo "      ✓ 已存在，跳过"')
             script_lines.append(f'        ((SKIPPED++))')
             script_lines.append(f'    else')
-            script_lines.append(f'        {cmd}')
-            script_lines.append(f'        if [ $? -eq 0 ]; then')
-            script_lines.append(f'            SOURCE_FILE="$TARGET_DIR/{directory}/{model["file_path"]}"')
-            script_lines.append(f'            TARGET_FILE="$TARGET_DIR/{directory}/{model["name"]}"')
-            script_lines.append(f'            if [ "$SOURCE_FILE" != "$TARGET_FILE" ] && [ -f "$SOURCE_FILE" ]; then')
-            script_lines.append(f'                mv "$SOURCE_FILE" "$TARGET_FILE" 2>/dev/null || true')
-            script_lines.append(f'                rmdir "$(dirname "$SOURCE_FILE")" 2>/dev/null || true')
+            script_lines.append(f'        # 重试循环')
+            script_lines.append(f'        DOWNLOAD_SUCCESS=false')
+            script_lines.append(f'        for ((attempt=1; attempt<=MAX_RETRIES; attempt++)); do')
+            script_lines.append(f'            if [ $attempt -gt 1 ]; then')
+            script_lines.append(f'                echo "      🔄 重试 $attempt/$MAX_RETRIES..."')
+            script_lines.append(f'                sleep $RETRY_DELAY')
+            script_lines.append(f'                # 重新设置环境变量，清理可能的污染状态')
+            script_lines.append(f'                export HF_ENDPOINT="https://hf-mirror.com"')
             script_lines.append(f'            fi')
-            script_lines.append(f'            echo "      ✓ 下载完成"')
+            script_lines.append(f'            ')
+            script_lines.append(f'            {cmd}')
+            script_lines.append(f'            ')
+            script_lines.append(f'            if [ $? -eq 0 ]; then')
+            script_lines.append(f'                SOURCE_FILE="$TARGET_DIR/{directory}/{model["file_path"]}"')
+            script_lines.append(f'                TARGET_FILE="$TARGET_DIR/{directory}/{model["name"]}"')
+            script_lines.append(f'                if [ "$SOURCE_FILE" != "$TARGET_FILE" ] && [ -f "$SOURCE_FILE" ]; then')
+            script_lines.append(f'                    mv "$SOURCE_FILE" "$TARGET_FILE" 2>/dev/null || true')
+            script_lines.append(f'                    rmdir "$(dirname "$SOURCE_FILE")" 2>/dev/null || true')
+            script_lines.append(f'                fi')
+            script_lines.append(f'                echo "      ✓ 下载完成"')
+            script_lines.append(f'                DOWNLOAD_SUCCESS=true')
+            script_lines.append(f'                break')
+            script_lines.append(f'            else')
+            script_lines.append(f'                if [ $attempt -eq $MAX_RETRIES ]; then')
+            script_lines.append(f'                    echo "      ✗ 下载失败（已重试 $MAX_RETRIES 次）"')
+            script_lines.append(f'                fi')
+            script_lines.append(f'            fi')
+            script_lines.append(f'        done')
+            script_lines.append(f'        ')
+            script_lines.append(f'        if [ "$DOWNLOAD_SUCCESS" = true ]; then')
             script_lines.append(f'            ((SUCCESS++))')
             script_lines.append(f'        else')
-            script_lines.append(f'            echo "      ✗ 下载失败"')
             script_lines.append(f'            ((FAILED++))')
             script_lines.append(f'        fi')
             script_lines.append(f'    fi')
