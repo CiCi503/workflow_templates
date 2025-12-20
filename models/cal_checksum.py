@@ -9,7 +9,7 @@
 - 比较并报告不一致的文件
 
 依赖：
-    pip install huggingface_hub requests
+    pip install huggingface_hub
 
 使用方法：
     python3 cal_checksum.py /path/to/models models_20251225.json
@@ -26,10 +26,10 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 try:
-    import requests
+    from huggingface_hub import HfApi
 except ImportError:
-    print("❌ 错误: 请先安装 requests")
-    print("运行: pip install requests")
+    print("❌ 错误: 请先安装 huggingface_hub")
+    print("运行: pip install huggingface_hub")
     sys.exit(1)
 
 
@@ -80,28 +80,35 @@ def parse_hf_url(url: str) -> Optional[Dict[str, str]]:
 
 
 def get_hf_file_sha256(repo_id: str, filename: str, revision: str = "main") -> Optional[str]:
-    """通过 HF API 获取文件的 SHA256"""
+    """通过 HuggingFace Hub SDK 获取文件的 SHA256"""
     try:
-        # 使用 HF API 获取文件树
-        api_url = f"https://huggingface.co/api/models/{repo_id}/tree/{revision}"
-        params = {"recursive": "True"}
+        # 使用 HfApi，会自动使用 HF_ENDPOINT 环境变量
+        api = HfApi()
         
-        response = requests.get(api_url, params=params, timeout=30)
-        response.raise_for_status()
-        
-        files = response.json()
+        # 获取仓库文件树
+        repo_files = api.list_repo_tree(
+            repo_id=repo_id,
+            revision=revision,
+            recursive=True
+        )
         
         # 查找目标文件
-        for file_info in files:
-            file_path = file_info.get('path', '')
+        for file_info in repo_files:
+            # 跳过目录
+            if not hasattr(file_info, 'path'):
+                continue
+                
+            file_path = file_info.path
+            
             # 匹配文件路径
-            if file_path == filename or file_path.endswith('/' + filename) or file_path.endswith(filename):
-                # LFS 文件的 sha256
-                if 'lfs' in file_info and 'sha256' in file_info['lfs']:
-                    return file_info['lfs']['sha256'].lower()
-                # 有些文件可能在 oid 中
-                if 'oid' in file_info and file_info['oid'].startswith('sha256:'):
-                    return file_info['oid'].replace('sha256:', '').lower()
+            if file_path == filename or file_path.endswith('/' + filename):
+                # 检查是否有 LFS 信息
+                if hasattr(file_info, 'lfs') and file_info.lfs:
+                    if hasattr(file_info.lfs, 'sha256'):
+                        return file_info.lfs.sha256.lower()
+                    # 有些文件可能在 oid 中
+                    if hasattr(file_info.lfs, 'oid') and file_info.lfs.oid.startswith('sha256:'):
+                        return file_info.lfs.oid.replace('sha256:', '').lower()
         
         return None
         
@@ -321,6 +328,14 @@ def main():
     print("=" * 80)
     print("🔍 ComfyUI 模型 SHA256 验证工具")
     print("=" * 80)
+    
+    # 显示是否使用镜像
+    hf_endpoint = os.environ.get('HF_ENDPOINT')
+    if hf_endpoint:
+        print(f"✓ 使用 Hugging Face 镜像: {hf_endpoint}")
+    else:
+        print("ℹ️  使用官方 Hugging Face API (huggingface.co)")
+        print("   提示: 如需使用镜像，请设置环境变量: export HF_ENDPOINT=\"https://hf-mirror.com\"")
     print()
     
     # 加载模型映射

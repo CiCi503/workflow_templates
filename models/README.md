@@ -16,7 +16,7 @@
 
 安装依赖：
 ```bash
-pip install huggingface_hub requests
+pip install huggingface_hub
 ```
 
 ### 第 1 步：提取模型信息
@@ -67,6 +67,10 @@ python3 cal_checksum.py /root/ComfyUI/models models_20251225.json
 
 # 只验证指定目录
 python3 cal_checksum.py /root/ComfyUI/models models_20251225.json --dir vae
+
+# 使用国内镜像获取 SHA256（推荐）
+export HF_ENDPOINT="https://hf-mirror.com"
+python3 cal_checksum.py /root/ComfyUI/models models_20251225.json
 ```
 
 **验证结果**：
