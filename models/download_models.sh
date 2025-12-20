@@ -212,6 +212,12 @@ download_model() {
             sleep $retry_delay
         fi
         
+        # 显示执行的命令
+        if [ $attempt -eq 1 ]; then
+            echo -e "  ${CYAN}执行命令:${NC}"
+            echo -e "    ${CYAN}hf download \"$REPO_ID\" \"$FILE_PATH\" --local-dir \"$target_path\" --revision \"$REVISION\"${NC}"
+        fi
+        
         # 下载命令
         if hf download "$REPO_ID" "$FILE_PATH" \
             --local-dir "$target_path" \
