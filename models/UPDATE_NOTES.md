@@ -1,5 +1,58 @@
 # 更新说明
 
+## 🆕 新功能：SHA256 模型验证工具
+
+### 更新日期
+
+2024年12月20日
+
+### 新增内容
+
+新增 **SHA256 验证工具**，用于验证下载的模型文件完整性。
+
+### 功能特性
+
+- ✅ 自动计算本地模型文件的 SHA256
+- ✅ 从 Hugging Face 获取官方 SHA256
+- ✅ 对比并报告不一致的文件
+- ✅ 彩色终端输出（可选）
+- ✅ 支持导出 JSON 验证报告
+- ✅ 支持按目录验证
+
+### 新增文件
+
+| 文件名 | 说明 |
+|--------|------|
+| `verify_models_sha256.py` | SHA256 验证主脚本 |
+| `VERIFY_SHA256.md` | 详细使用文档 |
+| `verify_example.sh` | 使用示例脚本 |
+
+### 快速开始
+
+```bash
+# 安装依赖
+pip install huggingface_hub colorama
+
+# 验证所有模型
+python3 verify_models_sha256.py /path/to/models
+
+# 验证特定目录
+python3 verify_models_sha256.py /path/to/models --dir unet
+
+# 查看帮助
+python3 verify_models_sha256.py --help
+```
+
+### 使用场景
+
+1. **下载后验证** - 确保文件下载完整
+2. **定期检查** - 检测文件是否损坏
+3. **批量验证** - 验证多个目录的模型
+
+详细文档: [VERIFY_SHA256.md](VERIFY_SHA256.md)
+
+---
+
 ## 🎉 重要更新：使用 `hf download` 替代 `huggingface-cli download`
 
 ### 更新日期

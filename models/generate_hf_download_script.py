@@ -237,8 +237,9 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
             script_lines.append(f'    # [{i}/{len(dir_models)}] {model["name"]}')
             script_lines.append(f'    echo "  [{i}/{len(dir_models)}] 下载: {model["name"]}"')
             
-            # 下载命令（依赖脚本开头的 export HF_ENDPOINT）
+            # 下载命令（每次执行前都设置环境变量，确保镜像地址生效）
             cmd = (
+                f'export HF_ENDPOINT="https://hf-mirror.com" && '
                 f'hf download "{model["repo_id"]}" '
                 f'"{model["file_path"]}" '
                 f'--local-dir "$TARGET_DIR/{directory}" '
@@ -255,8 +256,6 @@ def generate_bash_script(csv_file, output_file, target_dir='/root/dehui/models')
             script_lines.append(f'            if [ $attempt -gt 1 ]; then')
             script_lines.append(f'                echo "      🔄 重试 $attempt/$MAX_RETRIES..."')
             script_lines.append(f'                sleep $RETRY_DELAY')
-            script_lines.append(f'                # 重新设置环境变量，清理可能的污染状态')
-            script_lines.append(f'                export HF_ENDPOINT="https://hf-mirror.com"')
             script_lines.append(f'            fi')
             script_lines.append(f'            ')
             script_lines.append(f'            {cmd}')

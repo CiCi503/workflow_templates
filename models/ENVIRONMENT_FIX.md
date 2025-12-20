@@ -36,18 +36,16 @@ HF_ENDPOINT="${HF_ENDPOINT:-https://hf-mirror.com}" hf download "repo/model" "fi
 # ✅ 1. 脚本开头统一 export（全局生效）
 export HF_ENDPOINT="https://hf-mirror.com"
 
-# ✅ 2. 每次重试前重新 export，清理可能的污染状态
+# ✅ 2. 每次执行前都设置环境变量（命令级别）
 for ((attempt=1; attempt<=MAX_RETRIES; attempt++)); do
     if [ $attempt -gt 1 ]; then
         echo "      🔄 重试 $attempt/$MAX_RETRIES..."
         sleep $RETRY_DELAY
-        
-        # 重新设置环境变量，清理可能的污染状态
-        export HF_ENDPOINT="https://hf-mirror.com"
     fi
     
-    # ✅ 3. 直接调用 hf download（依赖全局环境变量）
-    hf download "repo/model" "file" --local-dir "$TARGET_DIR" --revision main
+    # ✅ 3. 在命令中明确设置环境变量，确保每次执行都使用正确配置
+    export HF_ENDPOINT="https://hf-mirror.com" && \
+        hf download "repo/model" "file" --local-dir "$TARGET_DIR" --revision main
     
     if [ $? -eq 0 ]; then
         echo "      ✓ 下载完成"

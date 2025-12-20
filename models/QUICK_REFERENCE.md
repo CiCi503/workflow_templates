@@ -2,6 +2,8 @@
 
 ## 命令速查
 
+### 下载模型
+
 ```bash
 # 查看帮助
 ./download_with_hf.sh --help
@@ -17,6 +19,35 @@
 
 # 组合使用
 ./download_with_hf.sh --dirs loras --target-dir /root/dehui/models
+```
+
+### 验证模型完整性（SHA256）
+
+```bash
+# 验证所有模型
+python3 verify_models_sha256.py /path/to/models
+
+# 验证指定目录
+python3 verify_models_sha256.py /path/to/models --dir unet
+
+# 显示详细信息
+python3 verify_models_sha256.py /path/to/models --verbose
+
+# 导出验证报告
+python3 verify_models_sha256.py /path/to/models --output report.json
+```
+
+### 查询模型信息
+
+```bash
+# 查询模板所需模型
+python3 query_models.py template flux_schnell
+
+# 查询目录下的模型
+python3 query_models.py dir unet
+
+# 查询特定模型
+python3 query_models.py model flux1-dev
 ```
 
 ## 可用目录

@@ -267,9 +267,72 @@ python3 query_models.py template <模板名>
 python3 query_models.py dir unet
 ```
 
+## ✅ 验证模型完整性（重要！）
+
+下载完成后，强烈建议验证文件的 SHA256 哈希值，确保文件没有损坏或下载不完整。
+
+### 安装验证工具依赖
+
+```bash
+pip install huggingface_hub colorama
+```
+
+### 验证所有模型
+
+```bash
+python3 verify_models_sha256.py /path/to/models
+```
+
+### 验证特定目录
+
+```bash
+# 只验证 unet 目录
+python3 verify_models_sha256.py /path/to/models --dir unet
+
+# 验证多个目录
+python3 verify_models_sha256.py /path/to/models --dir loras --verbose
+```
+
+### 验证输出示例
+
+```
+================================================================================
+📊 验证总结
+================================================================================
+总文件数: 15
+✅ 一致:   13
+❌ 不一致: 2
+⚠️  错误:   0
+
+⚠️  以下文件 SHA256 不一致，建议重新下载:
+================================================================================
+  • loras/some_lora.safetensors
+  • vae/some_vae.safetensors
+```
+
+### 重新下载损坏的文件
+
+如果发现文件损坏：
+
+```bash
+# 删除损坏的文件
+rm /path/to/models/loras/damaged_file.safetensors
+
+# 重新下载该目录
+python3 download_models_simple.py --dirs loras
+```
+
+**💡 建议流程：**
+
+1. 下载模型 → `python3 download_models_simple.py --dirs unet`
+2. 验证完整性 → `python3 verify_models_sha256.py /path/to/models --dir unet`
+3. 如有损坏，重新下载 → `python3 download_models_simple.py --dirs unet`
+
+详细说明请查看: [VERIFY_SHA256.md](VERIFY_SHA256.md)
+
 ## 🎉 下载完成后
 
-1. **验证文件**: 确保关键模型已下载
+1. **验证文件**: 运行 SHA256 验证（见上方）
 2. **移动文件**: 如果需要，移动到 ComfyUI 的 models 目录
 3. **测试工作流**: 在 ComfyUI 中测试相关工作流
 
