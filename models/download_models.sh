@@ -301,8 +301,14 @@ for model_name, info in data.items():
     if filter_dirs and directory not in filter_dirs:
         continue
     
-    print(f'{model_name}|||{url}|||{directory}')
-" | while IFS='|||' read -r model_name url directory; do
+    # 使用特殊分隔符
+    sep = '###SEP###'
+    print(f'{model_name}{sep}{url}{sep}{directory}')
+" | while IFS= read -r line; do
+    # 手动分割，避免空字段问题
+    model_name=\$(echo \"\$line\" | awk -F'###SEP###' '{print \$1}')
+    url=\$(echo \"\$line\" | awk -F'###SEP###' '{print \$2}')
+    directory=\$(echo \"\$line\" | awk -F'###SEP###' '{print \$3}')
     current=$((current + 1))
     echo "[$current/$model_count] $model_name"
     echo -e "  目录: ${BLUE}$directory${NC}"
