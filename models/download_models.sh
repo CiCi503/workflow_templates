@@ -136,6 +136,9 @@ SKIPPED=0
 parse_hf_url() {
     local url="$1"
     
+    # 移除查询参数（如 ?download=true）
+    url="${url%%\?*}"
+    
     # 检查是否是 HF URL
     if [[ ! "$url" =~ ^https://huggingface\.co/ ]]; then
         echo ""
